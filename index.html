@@ -1,39 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>zyel lab</title>
-  <style>
-    body {
-      background: #0f0f0f;
-      color: #eaeaea;
-      font-family: monospace;
-      padding: 40px;
-      max-width: 700px;
-      margin: auto;
-    }
-    a { color: #7df9ff; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zyel lab – public ai + crypto experiment lab</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- CRT screen overlay -->
+    <div class="crt-overlay"></div>
+    <div class="scanlines"></div>
+    
+    <!-- Hamburger Menu -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-<h1>zyel lab</h1>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>zyel_lab:~$</h3>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#about" data-command="about">about</a></li>
+            <li><a href="#experiments" data-command="experiments">experiments</a></li>
+            <li><a href="#log" data-command="log">log</a></li>
+            <li><a href="#playground" data-command="playground">playground</a></li>
+            <li><a href="https://github.com/ZyeL13/zyel-lab" target="_blank" data-command="github">github</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p class="status">status: <span class="status-active">active</span></p>
+            <p class="last-update">last update: <span id="last-update"></span></p>
+        </div>
+    </nav>
 
-<p>public ai + crypto experiment lab</p>
+    <!-- Main Terminal Container -->
+    <main class="terminal">
+        <!-- Hero Section -->
+        <section id="hero" class="section">
+            <div class="terminal-output">
+                <p class="system-info">zyel@lab:~$ cat /etc/motd</p>
+                <pre class="ascii-art">
+ ███████╗██╗   ██╗███████╗██╗         ██╗      █████╗ ██████╗ 
+ ╚══███╔╝╚██╗ ██╔╝██╔════╝██║         ██║     ██╔══██╗██╔══██╗
+   ███╔╝  ╚████╔╝ █████╗  ██║         ██║     ███████║██████╔╝
+  ███╔╝    ╚██╔╝  ██╔══╝  ██║         ██║     ██╔══██║██╔══██╗
+ ███████╗   ██║   ███████╗███████╗    ███████╗██║  ██║██████╔╝
+ ╚══════╝   ╚═╝   ╚══════╝╚══════╝    ╚══════╝╚═╝  ╚═╝╚═════╝ 
+                </pre>
+                <h1 class="hero-title" id="typed-title"></h1>
+                <p class="hero-subtitle" id="typed-subtitle"></p>
+                <p class="hero-description" id="typed-description"></p>
+            </div>
+            <div class="prompt-container">
+                <span class="prompt">zyel@lab:~$</span>
+                <span class="command" id="help-command"></span>
+                <span class="cursor">█</span>
+            </div>
+        </section>
 
-<p>
-I build small systems, break them,
-and document what I learn.
-</p>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <p class="system-info">zyel@lab:~$ cat about.txt</p>
+            </div>
+            <div class="content">
+                <h2>> about_this_lab</h2>
+                <p>This is a public lab for AI + crypto experiments.</p>
+                <p>I build small systems, break them, and document what I learn.</p>
+                <p class="highlight">Philosophy: shipping experiments > talking about ideas</p>
+                <br>
+                <p>> Focus areas:</p>
+                <ul class="feature-list">
+                    <li>Multi-LLM coordination systems</li>
+                    <li>AI-powered crypto analysis tools</li>
+                    <li>Blockchain automation experiments</li>
+                    <li>Token mechanics & game theory</li>
+                </ul>
+                <br>
+                <p class="note">[!] Not polished. Actively building. Failures documented.</p>
+            </div>
+        </section>
 
-<h2>experiments</h2>
-<ul>
-  <li><a href="/experiments/">enter lab</a></li>
-</ul>
+        <!-- Experiments Section -->
+        <section id="experiments" class="section">
+            <div class="section-header">
+                <p class="system-info">zyel@lab:~$ ls -la experiments/</p>
+            </div>
+            <div class="content">
+                <h2>> active_experiments</h2>
+                <div class="experiment-list">
+                    <div class="experiment-item" data-status="running">
+                        <div class="experiment-header">
+                            <span class="status-badge running">● RUNNING</span>
+                            <h3>exp_001: Multi-LLM Debate Engine</h3>
+                            <span class="timestamp">2026-02-10</span>
+                        </div>
+                        <p class="experiment-description">Testing multi-LLM coordination for crypto topics. Three models debate bull/bear cases, fourth judges consensus.</p>
+                        <div class="experiment-meta">
+                            <span class="tag">llm-coordination</span>
+                            <span class="tag">crypto-analysis</span>
+                            <a href="experiments/exp1.md" class="link">[read_more]</a>
+                            <a href="#" class="link">[demo]</a>
+                        </div>
+                    </div>
 
-<h2>log</h2>
-<ul>
-  <li><a href="/log/">experiment notes</a></li>
-</ul>
+                    <div class="experiment-item" data-status="archived">
+                        <div class="experiment-header">
+                            <span class="status-badge archived">○ ARCHIVED</span>
+                            <h3>exp_000: Token Sentiment Tracker</h3>
+                            <span class="timestamp">2026-01-28</span>
+                        </div>
+                        <p class="experiment-description">Real-time sentiment analysis from Twitter/Reddit. Failed: API rate limits cascade → too expensive.</p>
+                        <div class="experiment-meta">
+                            <span class="tag">sentiment-analysis</span>
+                            <span class="tag">failed</span>
+                            <a href="experiments/exp0.md" class="link">[read_more]</a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <p class="note">→ One experiment per week. Always building.</p>
+            </div>
+        </section>
 
+        <!-- Log Section -->
+        <section id="log" class="section">
+            <div class="section-header">
+                <p class="system-info">zyel@lab:~$ tail -f log/latest.log</p>
+            </div>
+            <div class="content">
+                <h2>> experiment_log</h2>
+                <div class="log-entries">
+                    <div class="log-entry">
+                        <p class="log-timestamp">[2026-02-15 14:23:41]</p>
+                        <p>Rebooted lab infrastructure. New domain, new aesthetic.</p>
+                        <p>Set up folder structure: /experiments, /log, /playground</p>
+                        <p class="log-note">→ Next: ship multi-LLM debate engine v2</p>
+                    </div>
+
+                    <div class="log-entry">
+                        <p class="log-timestamp">[2026-02-12 09:15:03]</p>
+                        <p>Multi-LLM debate: Claude stronger reasoning, GPT-4 faster response</p>
+                        <p>Issue: timeout cascade when LLM B slow → added fallback chain</p>
+                        <p class="log-note">✓ Fixed: cascading fallback with 3-model redundancy</p>
+                    </div>
+
+                    <div class="log-entry">
+                        <p class="log-timestamp">[2026-02-08 22:41:19]</p>
+                        <p>Experiment 000 failed spectacularly. Rate limits destroyed the budget.</p>
+                        <p>Learning: Twitter API v2 is unusable for realtime sentiment at scale</p>
+                        <p class="log-note">⚠ Archived. Moving to on-chain data instead.</p>
+                    </div>
+                </div>
+                <br>
+                <p class="note">→ Daily updates. Raw notes. No polish.</p>
+            </div>
+        </section>
+
+        <!-- Playground Section -->
+        <section id="playground" class="section">
+            <div class="section-header">
+                <p class="system-info">zyel@lab:~$ ./launch_playground.sh</p>
+            </div>
+            <div class="content">
+                <h2>> interactive_demos</h2>
+                <p class="note">[!] Click to run experiments in your browser. No setup required.</p>
+                <br>
+                <div class="playground-grid">
+                    <div class="playground-item">
+                        <h3>LLM Debate Arena</h3>
+                        <p>Watch multiple LLMs argue in real-time</p>
+                        <a href="#" class="btn-demo">▶ Run on Replit</a>
+                        <a href="#" class="btn-code">&lt;/&gt; View Code</a>
+                    </div>
+
+                    <div class="playground-item">
+                        <h3>Token Price Oracle</h3>
+                        <p>AI-powered price prediction aggregator</p>
+                        <a href="#" class="btn-demo">▶ Run on CodeSandbox</a>
+                        <a href="#" class="btn-code">&lt;/&gt; View Code</a>
+                    </div>
+
+                    <div class="playground-item coming-soon">
+                        <h3>Smart Contract Analyzer</h3>
+                        <p>Coming soon...</p>
+                        <span class="status-badge">IN DEVELOPMENT</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="terminal-footer">
+            <p>zyel@lab:~$ █</p>
+            <p class="footer-note">building in public. documenting failures. shipping experiments.</p>
+            <p class="footer-links">
+                <a href="https://github.com/ZyeL13/zyel-lab" target="_blank">github</a> · 
+                <a href="https://twitter.com/xumuhl" target="_blank">twitter</a> · 
+                <a href="mailto:aryandopurnama@gmail.com">contact</a>
+            </p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
