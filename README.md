@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-MIT-00cc6a)](./LICENSE)
 [![Experiments](https://img.shields.io/badge/experiments-2-00ff88)](./experiments)
 
-**Live Site:** [zyel.vercel.app](https://zyel-lab.vercel.app) *(replace with your actual domain)*
+**Live Site:** [zyel.vercel.app](https://zyel-lab.vercel.app)
 
 ---
 
@@ -100,7 +100,7 @@ Real-time Twitter/Reddit sentiment analysis. Failed due to API rate limit costs 
 
 ```bash
 # Clone the repo
-git clone https://github.com/yourusername/zyel-lab.git
+git clone https://github.com/ZyeL13/zyel-lab.git
 cd zyel-lab
 
 # Open in browser (no build step needed)
