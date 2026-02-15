@@ -230,11 +230,60 @@ window.playground = () => {
 };
 
 // ===================================
+// Markdown File Handler
+// ===================================
+async function loadMarkdown(filepath) {
+    try {
+        const response = await fetch(filepath);
+        const markdown = await response.text();
+        
+        // Create modal
+        const modal = document.createElement('div');
+        modal.className = 'markdown-modal';
+        modal.innerHTML = `
+            <div class="markdown-content">
+                <button class="close-modal">✕</button>
+                <pre class="markdown-text">${markdown}</pre>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        // Close handler
+        modal.querySelector('.close-modal').addEventListener('click', () => {
+            modal.remove();
+        });
+        
+        // Click outside to close
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
+        
+    } catch (error) {
+        console.error('Failed to load markdown:', error);
+        alert('Failed to load experiment. Check console for details.');
+    }
+}
+
+// Add click handlers to experiment links
+function setupExperimentLinks() {
+    document.querySelectorAll('a[href$=".md"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            loadMarkdown(link.getAttribute('href'));
+        });
+    });
+}
+
+// ===================================
 // Initialize on DOM Load
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
     updateTimestamp();
     initTypewriting();
+    setupExperimentLinks();
     
     // Update timestamp every minute
     setInterval(updateTimestamp, 60000);
